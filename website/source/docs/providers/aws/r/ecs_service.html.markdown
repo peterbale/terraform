@@ -26,8 +26,8 @@ resource "aws_ecs_service" "mongo" {
   depends_on = ["aws_iam_role_policy.foo"]
 
   placement_strategy {
-    type = "binpack"
-    field = "CPU"
+    type  = "binpack"
+    field = "cpu"
   }
 
   load_balancer {
