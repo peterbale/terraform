@@ -26,6 +26,7 @@ IMPROVEMENTS:
  * provider/ignition: Migrate all of the igition resources to data sources [GH-11851]
  * provider/openstack: Set Availability Zone in Instances [GH-12610]
  * provider/openstack: Force Deletion of Instances [GH-12689]
+ * provider/rancher: Better comparison of compose files [GH-12561]
 
 BUG FIXES:
 
