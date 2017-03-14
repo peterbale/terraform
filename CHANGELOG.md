@@ -4,6 +4,7 @@ FEATURES:
 
  * **New Data Source:**  `openstack_networking_network_v2` [GH-12304]
  * **New Resource:**  `aws_iam_account_alias` [GH-12648]
+ * **New Resource:**  `datadog_downtime` [GH-10994]
  * **New Resource:**  `ns1_notifylist` [GH-12373]
  * **New Resource:**  `google_container_node_pool` [GH-11802]
  * **New Resource:**  `rancher_host` [GH-11545]
