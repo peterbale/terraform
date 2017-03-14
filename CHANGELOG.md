@@ -6,6 +6,7 @@ FEATURES:
  * **New Resource:**  `aws_iam_account_alias` [GH-12648]
  * **New Resource:**  `ns1_notifylist` [GH-12373]
  * **New Resource:**  `google_container_node_pool` [GH-11802]
+ * **New Resource:**  `rancher_host` [GH-11545]
 
 IMPROVEMENTS:
 
