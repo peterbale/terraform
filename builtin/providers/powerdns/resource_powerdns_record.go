@@ -91,6 +91,12 @@ func resourcePDNSRecordCreate(d *schema.ResourceData, meta interface{}) error {
 		d.SetId(rrSet.Id())
 	}
 
+	err := client.NotifyZone(d.Get("zone").(string))
+
+	if err != nil {
+		return fmt.Errorf("Error notifying PowerDNS Zone: %s", err)
+	}
+
 	return resourcePDNSRecordRead(d, meta)
 }
 
@@ -124,6 +130,12 @@ func resourcePDNSRecordDelete(d *schema.ResourceData, meta interface{}) error {
 
 	if err != nil {
 		return fmt.Errorf("Error deleting PowerDNS Record: %s", err)
+	}
+
+	err := client.NotifyZone(d.Get("zone").(string))
+
+	if err != nil {
+		return fmt.Errorf("Error notifying PowerDNS Zone: %s", err)
 	}
 
 	return nil
