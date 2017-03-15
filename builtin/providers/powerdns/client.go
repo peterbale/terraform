@@ -365,3 +365,28 @@ func (client *Client) DeleteRecordSetByID(zone string, recId string) error {
 		return client.DeleteRecordSet(zone, name, tpe)
 	}
 }
+
+// Notifies Zone
+func (client *Client) NotifyZone(zone string) error {
+	req, err := client.newRequest("PUT", fmt.Sprintf("/servers/localhost/zones/%s/notify", zone), nil)
+	if err != nil {
+		return err
+	}
+
+	resp, err := client.Http.Do(req)
+	if err != nil {
+		return err
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode != 200 && resp.StatusCode != 204 {
+		errorResp := new(errorResponse)
+		if err = json.NewDecoder(resp.Body).Decode(errorResp); err != nil {
+			return fmt.Errorf("Error notifying zone: %s", zone)
+		} else {
+			return fmt.Errorf("Error notifying zone: %s, reason: %q", zone, errorResp.ErrorMsg)
+		}
+	} else {
+		return nil
+	}
+}
